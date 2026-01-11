@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://okr-digital.github.io/saas-impact-simulator/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
