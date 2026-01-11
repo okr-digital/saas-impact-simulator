@@ -5,7 +5,7 @@ export interface BaselineInputs {
   sessions_per_month: number;
   mql_rate: number; // 0-1
   cost_per_mql: number;
-  marketing_spend_fixed: number; // Alternative if cost_per_mql is disabled (simplified for MVP to just toggle logic)
+  marketing_spend_fixed: number; // Alternative if cost_per_mql is disabled
   use_cost_per_mql: boolean;
 
   // Conversion (Shared keys, semantic meaning changes based on Model)
@@ -24,15 +24,11 @@ export interface BaselineInputs {
   logo_churn_monthly: number; // 0-1
   gross_margin: number; // 0-1
   expansion_rate_monthly: number; // 0-1 (Advanced)
-  payment_terms_days: number; // (Advanced)
 
   // Operations
   onboarding_hours_per_customer: number;
   support_hours_per_customer_month: number;
   ops_cost_per_hour: number;
-  
-  // Advanced / Constants
-  hours_per_fte_month: number;
 }
 
 export type LeverType = 'multiplier' | 'delta_abs';

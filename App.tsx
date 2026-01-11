@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { BusinessModelType, BaselineInputs, ScenarioDefinition, LeverChange } from './types';
+import { BusinessModelType, BaselineInputs, LeverChange } from './types';
 import { PRESETS, DEFAULT_INPUTS_PLG, DEFAULT_INPUTS_SALES, SCENARIO_PRESETS } from './data/presets';
 import { applyLevers, simulateBusinessCase } from './utils/model';
 import { runDecisionEngine } from './utils/decisionEngine';
@@ -457,10 +457,22 @@ function App() {
 }
 
 // Simple KPI Card Component
-const KPICard = ({ label, value, subValue, type, tooltip, invertColor, highlightBetter }: any) => {
-  const format = (v: any) => {
+interface KPICardProps {
+  label: string;
+  value: number | string | null;
+  subValue?: number | string | null;
+  type?: 'currency' | 'int' | 'text';
+  tooltip?: string;
+  invertColor?: boolean;
+  highlightBetter?: boolean;
+}
+
+const KPICard: React.FC<KPICardProps> = ({ label, value, subValue, type, tooltip, invertColor, highlightBetter }) => {
+  const format = (v: number | string | null) => {
     if (v === 'Nie' || v === null) return 'Nie';
-    if (type === 'currency') return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', notation: 'compact' }).format(v);
+    if (typeof v === 'number' && type === 'currency') {
+      return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', notation: 'compact' }).format(v);
+    }
     return v;
   };
 

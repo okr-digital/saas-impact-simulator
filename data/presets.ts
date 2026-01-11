@@ -23,14 +23,12 @@ export const PRESETS: PresetOption[] = [
       sales_cost_per_sql: 0,
 
       arpa_month: 90,
-      payment_terms_days: 0,
       logo_churn_monthly: 0.04,
       expansion_rate_monthly: 0.005,
       gross_margin: 0.82,
 
       onboarding_hours_per_customer: 1.8,
       support_hours_per_customer_month: 0.35,
-      hours_per_fte_month: 140,
       ops_cost_per_hour: 38
     }
   },
@@ -56,14 +54,12 @@ export const PRESETS: PresetOption[] = [
       sales_cost_per_sql: 35,
 
       arpa_month: 280,
-      payment_terms_days: 30,
       logo_churn_monthly: 0.025,
       expansion_rate_monthly: 0.01,
       gross_margin: 0.78,
 
       onboarding_hours_per_customer: 3.2,
       support_hours_per_customer_month: 0.25,
-      hours_per_fte_month: 140,
       ops_cost_per_hour: 42
     }
   }
