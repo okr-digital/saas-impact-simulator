@@ -15,12 +15,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    
-    # DIESER TEIL IST NEU: Er sagt GitHub, wo deine package.json liegt
-    defaults:
-      run:
-        working-directory: saas-impact-simulator
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,9 +23,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # Cache deaktiviert, um den Lock-File-Fehler zu vermeiden
+          # WICHTIG: Kein Cache-Eintrag hier!
 
       - name: Install dependencies
+        # Wir erzwingen die Installation, auch ohne Lock-File
         run: npm install
 
       - name: Build
@@ -43,8 +38,9 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Pfad anpassen: Ordner/dist
-          path: './saas-impact-simulator/dist'
+          # Da die package.json direkt im Root liegt, 
+          # erstellt Vite den dist-Ordner auch im Root.
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
